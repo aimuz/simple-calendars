@@ -1,0 +1,27 @@
+name: china calendars
+on:
+  push:
+  schedule:
+    - cron: "0/30 * * * *"
+
+jobs:
+  holiday:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: download google calendar
+        run: curl https://calendar.google.com/calendar/ical/zh.china%23holiday%40group.v.calendar.google.com/public/basic.ics -o china/holiday.ics
+
+      # Runs a set of commands using the runners shell
+      - name: Commit and push if changed
+        run: |
+          git diff
+          git config --global user.email "mr.imuz@gmail.com"
+          git config --global user.name "calendar-rebot"
+          git commit -m "Github Action Auto Updated China Holiday"
+          git push
