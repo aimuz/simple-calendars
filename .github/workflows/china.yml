@@ -1,4 +1,4 @@
-name: china calendars
+name: China Calendars
 on:
   push:
   schedule:
