@@ -21,8 +21,8 @@ jobs:
       - name: Commit and push if changed
         run: |
           git config --global user.email "mr.imuz@gmail.com"
-          git config --global user.name "calendar-rebot"
+          git config --global user.name "calendar-robot"
           git diff
           git add .
-          git commit -m "Github Action Auto Updated China Holiday"
+          git commit -m "Github Action Auto Updated China Holiday Calendar"
           git push
