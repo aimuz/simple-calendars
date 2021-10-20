@@ -13,6 +13,6 @@ jobs:
       # Runs a single command using the runners shell
       - name: Push Commit To Gitee
         run: |
-          git remote add mirror https://aimuz:${{ secrets.GITEE_TOKEN }}@gitee.com/aimuz/simple-calendars
+          git remote add origin https://aimuz:${{ secrets.GITEE_TOKEN }}@gitee.com/aimuz/simple-calendars
           git pull
           git push
