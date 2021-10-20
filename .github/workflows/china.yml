@@ -16,7 +16,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Download google calendar
         run: curl https://calendar.google.com/calendar/ical/zh.china%23holiday%40group.v.calendar.google.com/public/basic.ics -o china/holiday.ics
-      
+
       - name: Trim holiday.ics
         run: |
           sed '/^DTSTAMP/ d' china/holiday.ics > china/holiday.ics.tmp
@@ -26,11 +26,11 @@ jobs:
         run: |
           git add .
           git diff HEAD --exit-code
-          if ($LASTEXITCODE -eq 0) {
+          if [ $? -eq 0 ]; then
             echo "No changes to commit!"
-          } else {
-            git config --global user.email "mr.imuz@gmail.com"
-            git config --global user.name "calendar-robot[bot]"
-            git commit -m "Github Action Auto Updated China Holiday Calendar"
-            git push
-          }
+            return
+          fi
+          git config --global user.email "mr.imuz@gmail.com"
+          git config --global user.name "calendar-robot[bot]"
+          git commit -m "Github Action Auto Updated China Holiday Calendar"
+          git push
