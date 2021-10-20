@@ -28,7 +28,7 @@ jobs:
           git diff HEAD --exit-code
           if [ $? -eq 0 ]; then
             echo "No changes to commit!"
-            return
+            exit 0
           fi
           git config --global user.email "mr.imuz@gmail.com"
           git config --global user.name "calendar-robot[bot]"
