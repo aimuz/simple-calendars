@@ -14,5 +14,5 @@ jobs:
       - name: Push Commit To Gitee
         run: |
           git fetch origin
-          git remote set-url mirror https://aimuz:${{ secrets.GITEE_TOKEN }}@gitee.com/aimuz/simple-calendars
+          git remote add mirror https://aimuz:${{ secrets.GITEE_TOKEN }}@gitee.com/aimuz/simple-calendars
           git push --tags --force --prune mirror "refs/remotes/origin/*:refs/heads/*"
