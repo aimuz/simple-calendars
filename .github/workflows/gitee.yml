@@ -15,4 +15,5 @@ jobs:
         run: |
           git remote add mirror https://aimuz:${{ secrets.GITEE_TOKEN }}@gitee.com/aimuz/simple-calendars
           git fetch origin
+          git rebase origin
           git push mirror
