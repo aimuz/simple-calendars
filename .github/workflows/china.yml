@@ -24,9 +24,13 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Commit and push if changed
         run: |
-          git config --global user.email "mr.imuz@gmail.com"
-          git config --global user.name "calendar-robot"
-          git diff
           git add .
-          git commit -m "Github Action Auto Updated China Holiday Calendar"
-          git push
+          git diff HEAD --exit-code
+          if ($LASTEXITCODE -eq 0) {
+            echo "No changes to commit!"
+          } else {
+            git config --global user.email "mr.imuz@gmail.com"
+            git config --global user.name "calendar-robot[bot]"
+            git commit -m "Github Action Auto Updated China Holiday Calendar"
+            git push
+          }
