@@ -24,12 +24,12 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Commit and push if changed
         run: |
-          git add .
           git diff HEAD --exit-code
           if [ $? -eq 0 ]; then
             echo "No changes to commit!"
             exit 0
           fi
+          git add .
           git config --global user.email "mr.imuz@gmail.com"
           git config --global user.name "calendar-robot[bot]"
           git commit -m "Github Action Auto Updated China Holiday Calendar"
