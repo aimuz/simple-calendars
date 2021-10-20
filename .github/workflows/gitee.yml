@@ -1,4 +1,4 @@
-name: China Calendars
+name: Gitee
 on:
   push:
 jobs:
